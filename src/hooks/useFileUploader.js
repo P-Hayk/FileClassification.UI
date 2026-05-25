@@ -123,6 +123,9 @@ export function useFileUploader() {
     const start = nextIndex.current
     nextIndex.current += selected.length
     const pairs = selected.map((file, i) => ({ file, index: start + i }))
+    const queued = {}
+    for (const { index } of pairs) queued[index] = STATUS.QUEUED
+    setStatuses(prev => ({ ...prev, ...queued }))
     setTxtFiles(prev => [...prev, ...selected])
     setHasScanned(true)
     runUploads(pairs)
@@ -215,7 +218,7 @@ export function useFileUploader() {
     if (!isLive(+index)) continue
     if (status === STATUS.DONE) doneCount++
     else if (status === STATUS.ERROR) errorCount++
-    else if (status === STATUS.UPLOADING || status === STATUS.PENDING || status === STATUS.CLASSIFYING) activeCount++
+    else if (status === STATUS.QUEUED || status === STATUS.UPLOADING || status === STATUS.PENDING || status === STATUS.CLASSIFYING) activeCount++
   }
 
   const visibleCount = txtFiles.length - deletedIndices.size

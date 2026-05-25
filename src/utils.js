@@ -11,11 +11,11 @@ export function mapBeStateToStatus(beState) {
 }
 
 export function statusIcon(status) {
-  return { pending: '○', uploading: '◌', classifying: '◌', done: '●', error: '✕', canceled: '⊘' }[status] ?? '○'
+  return { queued: '○', pending: '○', uploading: '◌', classifying: '◌', done: '●', error: '✕', canceled: '⊘' }[status] ?? '○'
 }
 
 export function statusLabel(status) {
-  return { pending: 'Pending', uploading: 'Uploading…', classifying: 'Classifying…', done: 'Done', error: 'Failed', canceled: 'Canceled' }[status] ?? ''
+  return { queued: 'Queued', pending: 'Pending', uploading: 'Uploading…', classifying: 'Classifying…', done: 'Done', error: 'Failed', canceled: 'Canceled' }[status] ?? ''
 }
 
 export function formatSize(bytes) {
