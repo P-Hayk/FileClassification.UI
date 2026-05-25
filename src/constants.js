@@ -7,7 +7,8 @@ export const BE_STATE = {
 }
 
 export const STATUS = {
-  PENDING:     'pending',
+  QUEUED:      'queued',      // waiting for its turn to be uploaded
+  PENDING:     'pending',     // uploaded to BE, waiting for the worker
   UPLOADING:   'uploading',
   CLASSIFYING: 'classifying',
   DONE:        'done',
