@@ -1,4 +1,4 @@
-# folder-uploader
+# FileClassification.UI
 
 React frontend for the FileClassification service. Pick a folder, watch its `.txt`
 files upload and get classified in real time, and act on each row individually
